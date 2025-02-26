@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: my-ingress
 spec:
+  ingressClassName: traefik  # Add this line
   rules:
   - host: app1.com
     http:

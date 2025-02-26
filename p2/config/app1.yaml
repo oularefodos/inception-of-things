@@ -15,7 +15,7 @@ spec:
       containers:
       - name: app1
         image: hashicorp/http-echo:latest
-        args: ["-text", "Application 1"]
+        args: ["-text", "Application 1", "-listen", ":80"] 
         ports:
         - containerPort: 80
 ---
