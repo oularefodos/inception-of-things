@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: my-ingress
 spec:
-  ingressClassName: traefik  # Add this line
   rules:
   - host: app1.com
     http:
@@ -25,8 +24,12 @@ spec:
             name: app2-service
             port:
               number: 80
-  defaultBackend:
-    service:
-      name: app3-service
-      port:
-        number: 80
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app3-service
+            port:
+              number: 80
