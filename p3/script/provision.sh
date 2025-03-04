@@ -34,6 +34,9 @@ sudo kubectl create namespace argocd
 # Install Argo CD using the stable manifest
 sudo kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+echo "Waiting for Argo CD to become ready..."
+sudo kubectl wait --for=condition=available deployments -n argocd --all --timeout=300s
+
 sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d > argo_password
 
 sudo kubectl create namespace dev
