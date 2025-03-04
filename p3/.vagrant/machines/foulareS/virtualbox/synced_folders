@@ -1,0 +1,1 @@
+{"virtualbox":{"/config":{"create":true,"guestpath":"/config","hostpath":"/Users/foulare/Desktop/inception-of-things/p3/config","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/foulare/Desktop/inception-of-things/p3","disabled":false,"__vagrantfile":true}}}

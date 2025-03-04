@@ -1,0 +1,17 @@
+Vagrant.configure("2")  do |config|
+  # Create The Common Seting
+  config.vm.box = "bento/debian-11"
+  config.vm.synced_folder "./config", "/config", create: true
+
+  # Create The Controller Machine
+  config.vm.define "foulareS" do |server|
+      server.vm.hostname = "foulareS"
+      server.vm.network "private_network", ip: "192.168.56.110"
+      server.vm.provider "virtualbox" do |vb|
+          vb.memory = 2084
+          vb.cpus = 1
+          vb.name = "foulareS"
+      end
+      server.vm.provision "shell", path: "script/provision.sh"
+  end
+end
