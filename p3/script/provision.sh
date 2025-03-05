@@ -45,3 +45,12 @@ sudo kubectl apply -f config/app.yaml -n argocd
 
 sudo kubectl apply -f config/deploy.yaml -n dev
 
+echo "Waiting for dev deployments to become ready..."
+sudo kubectl wait --for=condition=available deployments -n dev --all --timeout=300s
+
+sudo nohup kubectl port-forward svc/argocd-server -n argocd 4242:443 --address 0.0.0.0 >/dev/null 2>&1 &
+
+echo "Waiting for dev deployments to become ready..."
+sudo kubectl wait --for=condition=available deployments -n dev --all --timeout=300s
+
+sudo nohup kubectl port-forward svc/playground-service -n dev 8888:8888 --address 0.0.0.0 >/dev/null 2>&1 &
