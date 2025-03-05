@@ -43,3 +43,5 @@ sudo kubectl create namespace dev
 
 sudo kubectl apply -f config/app.yaml -n argocd
 
+sudo kubectl apply -f config/deploy.yaml -n dev
+
